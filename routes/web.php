@@ -218,7 +218,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         
         
         //verify routes for admin
-        Route::get('/user/verify/request', [VerifiyedController::class, 'index'])->name('upgrade.request');
+        Route::get('/user/verify/request', [UserController::class, 'upgradeRequestList'])->name('upgrade.request');
+        Route::get('/user/verify/approve-list/', [UserController::class, 'upgradeApprovedList'])->name('paid.approve.list');
         Route::get('/user/verify/approve/{id}', [UserController::class, 'approve'])->name('paid.approve');
         
 

@@ -8,8 +8,5 @@ use App\Models\Paid;
 
 class VerifiyedController extends Controller
 {
-    public function index(){
-        $requestveryfi = Paid::all();
-       return view('admin.user.verify.index', compact('requestveryfi'));
-    }
+    
 }

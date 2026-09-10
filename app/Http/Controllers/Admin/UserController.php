@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Paid;
+use DB;
 
 class UserController extends Controller
 {
@@ -86,7 +88,7 @@ class UserController extends Controller
         $user = User::findOrFail($requestedUser->user_id);
 
         // Update paid status
-        $requestedUser->status = 'approved';
+        $requestedUser->status = "approved";
         $requestedUser->save();
 
         // Update user
@@ -94,6 +96,8 @@ class UserController extends Controller
         $user->upgrade_at = now();
         $user->upgrade_expired_at = now()->addMonths(3);
         $user->save();
+
+
     });
 
         return redirect()->back()->with('success', 'User approved successfully.');
@@ -102,5 +106,18 @@ class UserController extends Controller
 
         return redirect()->back()->with('error', $e->getMessage());
     }
+  }
+
+  
+  public function upgradeRequestList()
+  {
+         $list = Paid::where('status','pending')->get();
+        return view('admin.user.verify.index', compact('list'));
+  }
+
+  public function upgradeApprovedList()
+  {
+         $list = Paid::where('status','approved')->get();
+        return view('admin.user.verify.index', compact('list'));
   }
 }

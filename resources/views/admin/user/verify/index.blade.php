@@ -125,6 +125,16 @@ tr:last-child td{border-bottom:none}
           </div>
          </div> -->
          <div class="col-md-8">
+            @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+          @endif
+            @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
                <div class="card shadow-sm border-0 rounded-3 mt-3">
                    <div class="card-body">
                    <table class="table table-striped  table-responsive">
@@ -139,32 +149,55 @@ tr:last-child td{border-bottom:none}
                       </tr>
                     </thead>
                     <tbody>
-            @foreach( $requestveryfi as $data )
+            @foreach($list as $data )
 			      <tr>
 			      <td>{{ $loop->index +1}}</td>
-			      <td>{{ $data->ac_number}}</td>
-			      <td>{{ $data->amount}}</td>
-			      <td>{{ $data->tran_id}}</td>
-            <td>{{ \Carbon\Carbon::parse($data->expired_at)->format('d M Y g:i a') }}</td>
-            <td>{{ $data->status}}</td>
+			      <td>{{ $data->ac_number ?? ''}}</td>
+			      <td>{{ $data->amount ?? ''}}</td>
+			      <td>{{ $data->tran_id ?? ''}}</td>
+            <td>{{ \Carbon\Carbon::parse($data->expired_at)->format('d M Y g:i a') ?? ''}}</td>
+            <td>
+              @if($data->status=="pending")
+
+              <strong class="badge badge-warnig">Pending</strong>
+
+               @elseif($data->status=="approved")
+
+                <strong class="badge badge-success">Approved</strong>
+              @elseif($data->status=="rejected")
+
+              <strong class="badge badge-success">Rejected</strong>
+               @elseif($data->status=="expired")
+
+              <strong class="badge badge-success">Expired</strong>
+              @endif
+
+            </td>
 			      <td>
-			      	 <!-- delete button -->
-            <a href="{{route('admin.paid.approve',$data->id)}}">
-               <button class="btn btn-sm btn-danger"> <i class="fa fa-check">Approve</button>
-            </a>
+			      	 <!-- action button -->
+
+                @if($data->status=="pending")
+
+               <a href="{{route('admin.paid.approve',$data->id)}}">
+                 <button class="btn btn-sm btn-success"> <i class="fa fa-check">Approve</button>
+              </a>
 
             <a href="">
                <button class="btn btn-sm btn-danger">Delete</button>
             </a>
 
-            <!-- edit button -->
-             <button class="editBtn btn btn-sm btn-success"
-                  data-id=""
-                  data-name=""
-                  data-type=""
-                  data-status="">
-                  Edit
-                  </button>
+               @elseif($data->status=="approved")
+
+                <strong class="badge badge-success">Approved</strong>
+              @elseif($data->status=="rejected")
+
+              <strong class="badge badge-success">Approved</strong>
+               @elseif($data->status=="expired")
+
+              <strong class="badge badge-success">Expired</strong>
+              @endif
+
+
 			           </td>
 			           </tr>
                  @endforeach
