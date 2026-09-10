@@ -66,9 +66,41 @@ class UserController extends Controller
     }
 
     public function userDetails($id)
-   {
+    {
     $user = User::findOrFail($id);
 
     return view('admin.user.user-info', compact('user'));
+   }
+
+
+  public function approve($id)
+  {
+    try {
+        
+        DB::transaction(function () use ($id) {
+
+        // Fetch payment request
+        $requestedUser = Paid::findOrFail($id);
+
+        // Fetch user
+        $user = User::findOrFail($requestedUser->user_id);
+
+        // Update paid status
+        $requestedUser->status = 'approved';
+        $requestedUser->save();
+
+        // Update user
+        $user->upgrade_status = 'active';
+        $user->upgrade_at = now();
+        $user->upgrade_expired_at = now()->addMonths(3);
+        $user->save();
+    });
+
+        return redirect()->back()->with('success', 'User approved successfully.');
+
+    } catch (\Exception $e) {
+
+        return redirect()->back()->with('error', $e->getMessage());
+    }
   }
 }

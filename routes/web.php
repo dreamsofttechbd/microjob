@@ -215,7 +215,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
         Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])
             ->name('dashboard');
-    Route::get('/user/verify/request', [VerifiyedController::class, 'index'])->name('upgrade.request');
+        
+        
+        //verify routes for admin
+        Route::get('/user/verify/request', [VerifiyedController::class, 'index'])->name('upgrade.request');
+        Route::get('/user/verify/approve/{id}', [UserController::class, 'approve'])->name('paid.approve');
+        
+
+
+
+
         //continents route
         Route::get('/continent-add', [ContinentController::class, 'index'])->name('continent');
         Route::post('/continent-store', [ContinentController::class, 'store'])->name('continent.store');

@@ -149,9 +149,14 @@ tr:last-child td{border-bottom:none}
             <td>{{ $data->status}}</td>
 			      <td>
 			      	 <!-- delete button -->
+            <a href="{{route('admin.paid.approve',$data->id)}}">
+               <button class="btn btn-sm btn-danger"> <i class="fa fa-check">Approve</button>
+            </a>
+
             <a href="">
                <button class="btn btn-sm btn-danger">Delete</button>
             </a>
+
             <!-- edit button -->
              <button class="editBtn btn btn-sm btn-success"
                   data-id=""
