@@ -19,7 +19,7 @@ class CheckUpgrade
         if (Auth::check() && !Auth::user()->is_upgrade) {
             $message = "Please Upgrade your account for more action";
 
-            return redirect()->route('route')->with('message', $message);
+            return redirect()->route('account.verify')->with('message', $message);
         }
 
         return $next($request);
