@@ -3,6 +3,9 @@
 <div class="container">
 <div class="row d-flex justify-content-center align-items-center mt-2">
 	<div class="col-12 col-lg-4 mt-2">
+       @if(session()->has('message'))
+         <p class="alert alert-danger">  {{ session('message') }}</p>
+        @endif
   @if(Auth::user()->upgrade_status !== 'active')
   <div class="card shadow p-4">
     <h3 class="text-center mb-4">Account Verification</h3>
