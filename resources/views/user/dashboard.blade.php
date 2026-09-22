@@ -318,56 +318,24 @@
   }
 </style>
 
+  <header class="topbar">
+        @include('user.layouts.partials.navbar') 
+    </header>
+  <aside class="sidebar" id="sidebar">
+      @include('user.layouts.partials.sidebar')
+  </aside>
+  
+        <div class="content">
+             <div class="row g-4">
+               @include('user.layouts.partials.braking_news')
+               </div>
+             </div>
+
 <div class="container mt-4 mb-5">
-    <!-- Marketing Popup Banner -->
-<div id="micro-job-popup-overlay" style="
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6);
-  z-index:99999; align-items:center; justify-content:center;
-">
-  <div style="
-    background:#fff; max-width:380px; width:90%; border-radius:14px;
-    padding:28px 24px; text-align:center; position:relative;
-    box-shadow:0 10px 40px rgba(0,0,0,0.3); font-family:sans-serif;
-    animation: mjPopIn .35s ease;
-  ">
-    <button onclick="document.getElementById('micro-job-popup-overlay').style.display='none'" style="
-      position:absolute; top:10px; right:14px; background:none; border:none;
-      font-size:22px; cursor:pointer; color:#888;
-    ">&times;</button>
-
-    <div style="font-size:40px; margin-bottom:10px;">💼</div>
-
-    <h3 style="margin:0 0 10px; color:#1a1a1a; font-size:19px;">
-      মাইক্রো জব ওয়েবসাইট বানাতে চাইলে কন্টাক্ট করুন
-    </h3>
 
 
 
-    <a href="https://www.facebook.com/profile.php?id=100090475625734" target="_blank" style="
-      display:block; background:#1877F2; color:#fff; text-decoration:none;
-      padding:12px; border-radius:8px; font-weight:bold;
-    ">👍 Facebook </a>
-  </div>
-</div>
 
-<style>
-@keyframes mjPopIn {
-  from { transform: scale(0.85); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-</style>
-
-<script>
-window.addEventListener('load', function () {
-  // প্রতি সেশনে একবার দেখাবে (চাইলে নিচের লাইন কমেন্ট করে দিলে প্রতিবার লোডে দেখাবে)
-  
-    setTimeout(function () {
-      document.getElementById('micro-job-popup-overlay').style.display = 'flex';
-      sessionStorage.setItem('mjPopupShown', '1');
-    }, 500); // ১.৫ সেকেন্ড পর শো করবে
-  
-});
-</script>
   <div class="row">
     <div class="col-12">
        
