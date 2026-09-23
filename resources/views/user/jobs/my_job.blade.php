@@ -438,8 +438,6 @@
         .hour-option label .hr-num { font-size: 14px; }
     }
 </style>
-
-
     <header class="topbar">
         @include('user.layouts.partials.navbar') 
     </header>

@@ -266,7 +266,7 @@
   .secret-input { max-width: 320px; }
 
   .btn-submit-job {
-    background: var(--primary);
+    /*background: var(--primary);*/
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -323,10 +323,17 @@
   }
 </style>
 
+    <header class="topbar">
+        @include('user.layouts.partials.navbar') 
+    </header>
+  <aside class="sidebar" id="sidebar">
+      @include('user.layouts.partials.sidebar')
+  </aside>
+
 <div class="container mt-4 mb-5">
 
   {{-- ── Back Button ── --}}
-  <a href="{{ route('user.find.jobs') }}" class="btn btn-danger btn-sm mb-3 text-decoration-none" style="font-size:12px;">
+  <a href="{{ route('user.find.jobs') }}" class="btn btn-primary btn-sm mb-3 text-decoration-none" style="font-size:12px;">
     <i class="fa fa-arrow-circle-left text-white"></i>
     <span class="text-white fw-bold">Back</span>
   </a>
@@ -367,10 +374,10 @@
       </ul>
     </div>
     <div class="action-row">
-      <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="font-size:12px;">
+      <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="font-size:12px;">
         <i class="fa fa-flag-checkered"></i> Report Job
       </a>
-      <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#hideModal" style="font-size:12px;">
+      <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hideModal" style="font-size:12px;">
         <i class="fa fa-eye-slash"></i> Hide Job
       </a>
     </div>
@@ -383,7 +390,7 @@
         <div class="meta-label">Excluded Countries</div>
         <div class="meta-value">—</div>
       </div>
-      <div>
+      <div>F
         <div class="meta-label">Done</div>
         <div class="meta-value">
           {{ $job->worker_done }}
@@ -469,7 +476,7 @@
       @endforeach
 
       <div class="submit-wrap">
-        <button type="submit" class="btn-submit-job">
+        <button type="submit" class="btn-submit-job btn-primary">
           <i class="fa fa-paper-plane me-1"></i> Submit
         </button>
       </div>

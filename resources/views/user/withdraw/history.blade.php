@@ -10,9 +10,8 @@
         <div class="content">
              <div class="row g-4">
                @include('user.layouts.partials.braking_news')
-               </div>
-             </div>
-<div class="container mt-4 px-3">
+
+               <div class="container mt-4 px-3">
     <div class="row">
         <div class="col-12 px-0">
 
@@ -127,10 +126,12 @@
                 </div>
                 @endforelse
             </div>
-
         </div>
     </div>
 </div>
+</div>
+</div>
+
 
 <footer class="mt-5 footer-section">
     @include('user.layouts.partials.footer')
