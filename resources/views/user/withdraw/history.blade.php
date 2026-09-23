@@ -6,15 +6,12 @@
   <aside class="sidebar" id="sidebar">
       @include('user.layouts.partials.sidebar')
   </aside>
-  
         <div class="content">
              <div class="row g-4">
                @include('user.layouts.partials.braking_news')
-
                <div class="container mt-4 px-3">
     <div class="row">
         <div class="col-12 px-0">
-
             {{-- Header --}}
             <h5 class="text-dark fw-bold mb-1">Withdraw History</h5>
             <span class="text-success small">{{ $count }} Result{{ $count != 1 ? 's' : '' }}</span>
@@ -29,7 +26,6 @@
                             <th>Method</th>
                             <th>Status</th>
                             <th>Date</th>
-                          <!--   <th>Reason</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -131,8 +127,6 @@
 </div>
 </div>
 </div>
-
-
 <footer class="mt-5 footer-section">
     @include('user.layouts.partials.footer')
 </footer>
