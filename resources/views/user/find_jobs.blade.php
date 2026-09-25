@@ -10,6 +10,7 @@
     <div class="content">
              <div class="row g-4">
                @include('user.layouts.partials.braking_news')
+               semfklds xdfmodmf
                <!--job table-->
                <div class="col-lg-12">
                 <div class="card border-0 rounded-2">
