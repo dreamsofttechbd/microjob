@@ -1,371 +1,42 @@
 @extends('user.layouts.app')
 @section('content')
-
-<style>
-  :root {
-    --primary:    #006A4E;
-    --success:    #1abc9c;
-    --danger:     #e74c3c;
-    --text-dark:  #2d3748;
-    --text-muted: #718096;
-    --bg-light:   #f7f8fc;
-    --border:     #e2e8f0;
-    --shadow:     0 2px 12px rgba(0,106,78,0.08);
-    --radius:     10px;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html, body { overflow-x: hidden; max-width: 100%; }
-  img { max-width: 100%; height: auto; }
-
-  body { font-size: 12px; background: var(--bg-light); }
-
-  .section-card {
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 16px 18px;
-    margin-bottom: 14px;
-  }
-
-  /* ── Job Header ── */
-  .job-header {
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 0;
-    margin-bottom: 14px;
-    overflow: hidden;
-  }
-
-  .job-thumbnail {
-    width: 100%;
-    /*max-height: 200px;*/
-    object-fit: cover;
-    display: block;
-  }
-
-  .job-header-body {
-    padding: 14px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .job-header-info { flex: 1; min-width: 0; }
-
-  .job-header h4 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin: 0 0 4px;
-    word-break: break-word;
-  }
-
-  .job-header .subtitle {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .earn-badge {
-    background: var(--primary);
-    color: #fff;
-    border-radius: 8px;
-    padding: 6px 14px;
-    font-size: 15px;
-    font-weight: 700;
-    white-space: nowrap;
-    flex-shrink: 0;
-    align-self: flex-start;
-  }
-
-  /* ── Rules ── */
-  .rules-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .rules-row .rules-label {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
-  .rules-card {
-    background: #e7faef;
-    border-radius: 8px;
-    border: 1px solid #c8e6c9;
-    padding: 12px 16px;
-    margin-top: 10px;
-  }
-
-  .rules-card .rules-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1b5e20;
-    margin-bottom: 6px;
-  }
-
-  .rules-card ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 12px;
-    color: var(--text-dark);
-    line-height: 1.9;
-  }
-
-  .action-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-  }
-
-  /* ── Meta Info Grid ── */
-  .meta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 16px;
-  }
-
-  .meta-label {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-  }
-
-  .meta-value {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-dark);
-    word-break: break-word;
-  }
-
-  .meta-value a {
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  /* ── Section Header ── */
-  .section-header {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 12px;
-  }
-
-  .section-header i { color: var(--danger); }
-
-  .job-description {
-    font-size: 12px;
-    color: var(--text-dark);
-    line-height: 1.8;
-    word-break: break-word;
-  }
-
-  /* ── Secret Code Example ── */
-  .secret-example-box {
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-top: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .secret-example-box i {
-    color: #d97706;
-    margin-top: 1px;
-    flex-shrink: 0;
-  }
-
-  .secret-example-box .ex-text {
-    font-size: 12px;
-    color: #92400e;
-    line-height: 1.6;
-  }
-
-  .secret-example-box .ex-label {
-    font-weight: 700;
-    display: block;
-    margin-bottom: 2px;
-    color: #78350f;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .4px;
-  }
-
-  /* ── Proof Fields ── */
-  .proof-item { margin-bottom: 16px; }
-
-  .proof-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-dark);
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-
-  .proof-index {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .form-control {
-    font-size: 12px;
-    border-radius: 8px;
-    border: 1.5px solid var(--border);
-    transition: border-color .2s;
-    width: 100%;
-  }
-
-  .form-control:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0,106,78,0.1);
-    outline: none;
-  }
-
-  .secret-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .secret-input { max-width: 320px; }
-
-  .btn-submit-job {
-    /*background: var(--primary);*/
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 9px 32px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .3px;
-    transition: background .2s;
-    cursor: pointer;
-  }
-
-  .btn-submit-job:hover { background: #005240; color: #fff; }
-
-  .submit-wrap {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-
-  /* ════════════ MOBILE ≤575px ════════════ */
-  @media (max-width: 575px) {
-    .container { padding-left: 10px !important; padding-right: 10px !important; }
-
-    .section-card { padding: 12px 13px; border-radius: 8px; }
-    .job-header-body { padding: 12px 13px; flex-direction: column; gap: 8px; }
-    .job-thumbnail { max-height: 160px; }
-    .job-header h4 { font-size: 14px; }
-    .earn-badge    { font-size: 13px; padding: 5px 12px; }
-
-    .rules-row     { flex-direction: column; align-items: flex-start; }
-
-    .action-row .btn {
-      flex: 1 1 calc(50% - 3px);
-      text-align: center;
-      font-size: 11px !important;
-      padding: 6px 4px;
-    }
-
-    .meta-grid    { gap: 10px 8px; }
-    .secret-input { max-width: 100%; }
-
-    .submit-wrap        { justify-content: stretch; }
-    .btn-submit-job     { width: 100%; padding: 11px; font-size: 13px; text-align: center; }
-
-    .modal-dialog       { margin: 8px; }
-    .modal-dialog:not(.modal-sm) { max-width: calc(100vw - 16px); }
-  }
-
-  /* ════════════ TABLET 576–767px ════════════ */
-  @media (min-width: 576px) and (max-width: 767px) {
-    .job-header h4 { font-size: 15px; }
-    .secret-input  { max-width: 260px; }
-    .job-thumbnail { max-height: 180px; }
-  }
-</style>
-
     <header class="topbar">
         @include('user.layouts.partials.navbar') 
     </header>
   <aside class="sidebar" id="sidebar">
       @include('user.layouts.partials.sidebar')
   </aside>
-
-<div class="container mt-4 mb-5">
-
-  {{-- ── Back Button ── --}}
-  <a href="{{ route('user.find.jobs') }}" class="btn btn-primary btn-sm mb-3 text-decoration-none" style="font-size:12px;">
+  <div class="content">
+    <div class="row g-4">
+    @include('user.layouts.partials.braking_news')
+    <div class="container mt-4 mb-5">
+  {{-- ── Job Header with Thumbnail ── --}}
+  <div class="job-header">
+     <div class="job-header-body">
+      <div class="job-header-info">
+        <h6 class="fw-semibold">{{ $job->title }}</h6>
+        <span class="subtitle"><span class="text-dark">Continent With Category</span> <i class="fa fa-long-arrow-right fw-light text-primary" aria-hidden="true"></i> {{ $job->continent->name }} <i class="fa fa-long-arrow-right fw-light text-primary" aria-hidden="true"></i> {{ $job->category->name }}</span>
+      </div>
+    <a href="{{ route('user.find.jobs') }}" class="btn btn-danger btn-sm mb-3 text-decoration-none" style="font-size:12px;">
     <i class="fa fa-arrow-circle-left text-white"></i>
     <span class="text-white fw-bold">Back</span>
   </a>
-
-  {{-- ── Job Header with Thumbnail ── --}}
-  <div class="job-header">
-
-     <div class="job-header-body">
-      <div class="job-header-info">
-        <h4>{{ $job->title }}</h4>
-        <span class="subtitle">{{ $job->continent->name }} &mdash; {{ $job->category->name }}</span>
-      </div>
-      <div class="earn-badge">${{ $job->worker_earn }}</div>
+      <div class="btn btn-primary btn-sm fw-bold" style="font-size:12px;">${{ $job->worker_earn }}</div>
     </div>
     @if($job->thumbnail)
-      <img src="{{ asset('storage/' . $job->thumbnail) }}"
-           alt="{{ $job->title }}"
-           class="job-thumbnail">
+      <img src="{{ asset('storage/' . $job->thumbnail) }}" alt="{{ $job->title }}" class="job-thumbnail">
     @endif
-   
   </div>
-
-  {{-- ── Rules + Report/Hide ── --}}
+  <!-- Rules + Report/Hide -->
   <div class="section-card">
     <div class="rules-row">
-      <span class="rules-label">Read the job rules.</span>
-      <button class="btn btn-success btn-sm" id="readRulesBtn" style="font-size:12px;">
+      <span class="rules-label">Understanding and following the rules helps ensure a safe, fair, and smooth experience for everyone</span>
+      <button class="btn btn-primary btn-sm" id="readRulesBtn" style="font-size:12px;">
         <i class="fa fa-book"></i> Read Rules
       </button>
     </div>
-    <div id="rulesBox" class="rules-card" style="display:none;">
-      <div class="rules-title">Job Rules</div>
+    <div id="rulesBox" class="rules-card bg-light border-primary" style="display:none;">
+      <div class="rules-title text-dark">Job Rules</div>
       <ul>
         <li>Candidates must apply before the deadline.</li>
         <li>Provide accurate information in your application.</li>
@@ -387,30 +58,30 @@
   <div class="section-card">
     <div class="meta-grid">
       <div>
-        <div class="meta-label">Excluded Countries</div>
+        <div class="meta-label text-dark">Excluded Countries</div>
         <div class="meta-value">—</div>
       </div>
       <div>F
-        <div class="meta-label">Done</div>
-        <div class="meta-value">
+        <div class="meta-label text-dark">Done</div>
+        <div class="meta-value btn btn-primary btn-sm text-white">
           {{ $job->worker_done }}
-          <span style="color:var(--text-muted); font-weight:400;">of</span>
+          <span style="color:#fff; font-weight:400;">&nbsp;of&nbsp;</span>
           {{ $job->worker_need }}
         </div>
       </div>
       <div>
-        <div class="meta-label">Employer</div>
+        <div class="meta-label text-dark">Employer</div>
         <div class="meta-value">
-          <a href="#">{{ $job->user->name }} <i class="fa fa-external-link" style="font-size:10px;"></i></a>
+          <a href="#" class="text-primary">{{ $job->user->name }} <i class="fa fa-external-link text-primary" style="font-size:10px;"></i></a>
         </div>
       </div>
       <div>
-        <div class="meta-label">Category</div>
-        <div class="meta-value">{{ $job->category->name }} &rarr; {{ $job->subcategory->name }}</div>
+        <div class="meta-label text-dark">Category</div>
+        <div class="meta-value text-dark">{{ $job->category->name }} &rarr; {{ $job->subcategory->name }}</div>
       </div>
       <div>
-        <div class="meta-label">Job ID</div>
-        <div class="meta-value" style="color:var(--text-muted); font-weight:500; font-size:11px;">{{ $job->code }}</div>
+        <div class="meta-label text-dark">Job ID</div>
+        <div class="meta-value text-primary" style="color:var(--text-muted); font-weight:500; font-size:11px;">{{ $job->code }}</div>
       </div>
     </div>
   </div>
@@ -418,9 +89,9 @@
   {{-- ── Description ── --}}
   <div class="section-card">
     <div class="section-header">
-      <i class="fa fa-question-circle"></i> What is expected from workers?
+      <i class="fa fa-question-circle text-primary"></i> What is expected from workers?
     </div>
-    <div class="job-description">
+    <div class="job-description text-dark">
       {!! nl2br(e($job->description)) !!}
     </div>
   </div>
@@ -458,19 +129,19 @@
     {{-- Proof Fields --}}
     <div class="section-card">
       <div class="section-header">
-        <i class="fa fa-question-circle"></i> Submit your proofs below
+        <i class="fa fa-question-circle text-primary"></i> Submit your proofs below
       </div>
 
       @foreach($job->proofs as $i => $proof)
       <div class="proof-item">
         <div class="proof-label">
-          <span class="proof-index">{{ $i + 1 }}</span>
-          <span>{{ $proof['label'] }}</span>
+          <span class="proof-index text-white">{{ $i + 1 }}</span>
+          <span class="text-dark">{{ $proof['label'] }}</span>
         </div>
         @if($proof['type'] == 'file')
           <input type="file" name="images[]" class="form-control">
         @else
-          <input type="text" name="texts[]" class="form-control" placeholder="Enter your answer...">
+          <input type="text" name="texts[]" class="form-control border-primary bg-light" placeholder="Enter your answer...">
         @endif
       </div>
       @endforeach
@@ -481,26 +152,25 @@
         </button>
       </div>
     </div>
-
   </form>
-
 </div>
-
-{{-- ── Report Modal ── --}}
+    </div>
+  </div>
+<!-- Report Modal -->
 <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="font-size:12px;">
       <div class="modal-header">
-        <h5 class="modal-title fw-bold" style="font-size:14px;">Job Reporting</h5>
+        <h5 class="modal-title fw-bold text-dark" style="font-size:14px;">Job Reporting</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <label class="fw-semibold mb-1 d-block">What is wrong with this job?</label>
-        <textarea class="form-control" rows="3" placeholder="Describe the issue..."></textarea>
+        <label class="fw-semibold mb-1 d-block text-dark">What is wrong with this job?</label>
+        <textarea class="form-control bg-light border-primary" rows="3" placeholder="Describe the issue..."></textarea>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-size:12px;">Cancel</button>
-        <button class="btn btn-success btn-sm" id="submitReportBtn" style="font-size:12px;">Submit Report</button>
+        <button class="btn btn-danger btn-sm" data-bs-dismiss="modal" style="font-size:12px;">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="submitReportBtn" style="font-size:12px;">Submit Report</button>
       </div>
     </div>
   </div>
@@ -520,7 +190,7 @@
         <p class="text-muted mb-0">Do you want to permanently hide this job?</p>
       </div>
       <div class="modal-footer border-0 justify-content-center gap-2 pt-0">
-        <button class="btn btn-success px-4 btn-sm" id="yesHideBtn" style="font-size:12px;">Yes</button>
+        <button class="btn btn-primary px-4 btn-sm" id="yesHideBtn" style="font-size:12px;">Yes</button>
         <button class="btn btn-danger px-4 btn-sm" data-bs-dismiss="modal" style="font-size:12px;">No</button>
       </div>
     </div>
@@ -537,11 +207,10 @@
     </div>
   </div>
 </div>
-
+<!-- footer -->
 <footer class="mt-5 footer-section">
   @include('user.layouts.partials.footer')
 </footer>
-
 <script>
   const readRulesBtn = document.getElementById('readRulesBtn');
   const rulesBox     = document.getElementById('rulesBox');
