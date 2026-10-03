@@ -179,7 +179,7 @@ tr:last-child td{border-bottom:none}
     <button class="hbtn" id="hbtn" onclick="toggleSB()">
       <span></span><span></span><span></span>
     </button>
-    <div class="logo">Onetask<em>Market</em> <span style="font-size:10px;background:#eff6ff;color:#2563eb;padding:2px 6px;border-radius:4px;font-weight:600;margin-left:2px">Admin</span></div>
+    <div class="logo">Jobfixs<em>Market</em> <span style="font-size:10px;background:#eff6ff;color:#2563eb;padding:2px 6px;border-radius:4px;font-weight:600;margin-left:2px">Admin</span></div>
     <div class="tb-search">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="4.5"/><path d="m10 10 3.5 3.5"/></svg>
       <input placeholder="Search jobs, users...">

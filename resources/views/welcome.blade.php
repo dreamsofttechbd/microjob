@@ -161,106 +161,25 @@
   <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2">
     <div>
       <h2 class="section-title mb-1">All jobs Categories</h2>
-      <p class="section-sub mb-0">Connect with 86K+ Career Opportunities</p>
+      <p class="section-sub mb-0">
+    Connect with {{ $jobCount >= 1000 ? rtrim(rtrim(number_format($jobCount / 1000, 1), '0'), '.') . 'K' : $jobCount }}+ Career Opportunities
+     </p>
     </div>
   </div>
   <div class="row g-3 mb-5">
+   @foreach($categories as $category)
     <div class="col-6 col-md-4 col-lg-2">
+    <a href="{{ route('jobs.category', $category->slug) }}" class="text-decoration-none">
       <div class="cat-card h-100">
-        <div class="cat-icon">🤖</div>
-        <div class="cat-title">AI Service</div>
-        <div class="cat-count">3 Skills</div>
+        <div class="cat-icon">
+          <img class="" src="{{ asset('category/' . $category->icon) }}" alt="{{ $category->name }}" title="{{ $category->name }}" style="width: 45px; height: 40px;">
+        </div>
+        <div class="cat-title"> {{ $category->name }}</div>
+        <div class="cat-count"> {{ $category->jobs_count }} Jobs</div>
       </div>
+    </a>
     </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">🏢</div>
-        <div class="cat-title">Architecture</div>
-        <div class="cat-count">2 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">📔</div>
-        <div class="cat-title">Brand Design</div>
-        <div class="cat-count">3 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">📊</div>
-        <div class="cat-title">Business Style</div>
-        <div class="cat-count">2 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">💡</div>
-        <div class="cat-title">Design & Creative</div>
-        <div class="cat-count">1 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">💻</div>
-        <div class="cat-title">Development & It</div>
-        <div class="cat-count">4 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">📱</div>
-        <div class="cat-title">Digital Marketing</div>
-        <div class="cat-count">3 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">✒️</div>
-        <div class="cat-title">Graphics & Design</div>
-        <div class="cat-count">5 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">📷</div>
-        <div class="cat-title">Photography</div>
-        <div class="cat-count">2 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">⌨️</div>
-        <div class="cat-title">Programming</div>
-        <div class="cat-count">2 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">📈</div>
-        <div class="cat-title">Sales Marketing</div>
-        <div class="cat-count">3 Skills</div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-2">
-      <div class="cat-card h-100">
-        <div class="cat-icon">🎥</div>
-        <div class="cat-title">Video Animation</div>
-        <div class="cat-count">0 Skills</div>
-      </div>
-    </div>
-
+   @endforeach
   </div>
 </div>
 
@@ -858,60 +777,8 @@
   </div>
  
  <!--footer-->
-
   <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="d-flex align-items-center">
-          <div class="logo-icon"><i class="bi bi-bullseye"></i></div>
-          <div class="brand-name">jobfixs</div>
-        </div>
-        <p class="brand-desc">
-          Your trusted platform for micro jobs and digital gigs. Connecting
-          employers with skilled workers worldwide.
-        </p>
-        <div class="copyright">&copy; 2026 jobfixs.com. All Rights Reserved.</div>
-      </div>
-
-      <div class="col-lg-8">
-        <div class="row">
-          <div class="col-sm-4 footer-col">
-            <div class="col-title">About Us</div>
-            <ul class="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
-            </ul>
-          </div>
-
-          <div class="col-sm-4 footer-col">
-            <div class="col-title">Agreement</div>
-            <ul class="footer-links">
-              <li><a href="#">Microjob Marketplace</a></li>
-              <li><a href="#">Deal Marketplace</a></li>
-            </ul>
-          </div>
-
-          <div class="col-sm-4 footer-col">
-            <div class="col-title">Social Media</div>
-            <div class="social-row">
-              <a href="#" class="social-icon telegram"><i class="bi bi-telegram"></i></a>
-              <a href="#" class="social-icon facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="social-icon email"><i class="bi bi-envelope-fill"></i></a>
-              <a href="#" class="social-icon whatsapp"><i class="bi bi-whatsapp"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-divider">
-      <div class="footer-credit">
-        Made by <b>jobfixs</b> Worldwide freelancers.<span class="dev-line"> Developed by <a href="#"> adfixs</a></span>
-      </div>
-    </div>
-  </div>
+ @include('frontend.layouts.partials.footer')
 </footer>
  
 <script>

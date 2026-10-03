@@ -22,12 +22,12 @@ use App\Models\Banner;
 use App\Models\User;
 
 
+
 class UserJobController extends Controller
 {
+
     // ── GET /user/create-job ──────────────────────────────────────────
-    public function create()
-    {
-    
+    public function create(){
         return view('user.jobs.create');
     }
 

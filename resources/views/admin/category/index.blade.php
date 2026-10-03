@@ -102,12 +102,14 @@ tr:last-child td{border-bottom:none}
 }
 </style>
 
+
+
 <div class="app">
   <div class="topbar">
     <button class="hbtn" id="hbtn" onclick="toggleSB()">
       <span></span><span></span><span></span>
     </button>
-    <div class="logo">Onetask<em>Market</em> <span style="font-size:10px;background:#eff6ff;color:#2563eb;padding:2px 6px;border-radius:4px;font-weight:600;margin-left:2px">Admin</span></div>
+    <div class="logo">Jobfixs<em></em> <span style="font-size:10px;background:#eff6ff;color:#2563eb;padding:2px 6px;border-radius:4px;font-weight:600;margin-left:2px">Admin</span></div>
     <div class="tb-search">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="4.5"/><path d="m10 10 3.5 3.5"/></svg>
       <input placeholder="Search jobs, users...">
@@ -117,22 +119,15 @@ tr:last-child td{border-bottom:none}
       <div class="ava">AD</div>
     </div>
   </div>
-
+  
   <div class="body">
     <div class="overlay" id="overlay" onclick="closeSB()"></div>
-
-    @include('admin.layouts.sidebar');
+    @include('admin.layouts.sidebar')
 
     <main class="main">
-       <div class="card shadow-sm border-0 rounded-3">
-   
-    <div class="card shadow-sm border-0 rounded-3 mt-4">
-    <div class="card-header bg-success text-white">
-        <h5 class="mb-0">Add Category</h5>
-    </div>
-
-    <div class="card-body">
-       @if(session()->has('success'))
+    <div class="row">
+        <div class="col-12 col-lg-4">
+                      @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
@@ -142,63 +137,70 @@ tr:last-child td{border-bottom:none}
                 {{ session('error') }}
             </div>
         @endif
-        <form action="{{ route('admin.category.store') }}" method="POST">
+          <h6 class="card border-0 rounded-2 mb-1  text-dark fw-bold">Add Category</h6>
+            <div class="card border-0 mt-0 rounded-2">
+                <div class="card-body">
+    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
-            <div class="mb-3">
+            <div class="mb-1">
                 <label class="form-label">Category Name</label>
                 <input type="text" name="category" class="form-control" placeholder="Youtube" required>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label class="form-label">Icon</label>
-                <input type="text" name="icon" class="form-control" placeholder="ⓕ" required>
+                <input type="file" name="icon" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn btn-success w-100">
-                 Save Category
+            <button type="submit" class="btn btn-primary btn-sm mt-1">
+                 Add Category
             </button>
         </form>
-    </div>
-</div>
-
-       <div class="card-body">
-		   <table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">Name</th>
-			      <th scope="col">Status</th>
-			      <th scope="col">Action</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	@php $i=1 @endphp
-			    @foreach($categories as $cat)
-			    <tr>
-			      <th scope="row">{{$i++}}</th>
-			      <td>{!!$cat->name!!}</td>
-			      <td>
-			      	@if($cat->is_active==true)
-			      	  Active
-			      	@else
+              </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+           <h6 class="card border-0 rounded-2 mb-1  text-dark fw-bold"> Category List</h6>
+            <div class="card border-0 rounded-2 mt-0">
+                <div class="card-body">
+            <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @php $i=1 @endphp
+          @foreach($categories as $cat)
+          <tr>
+            <th scope="row">{{$i++}}</th>
+            <td>{!!$cat->name!!}</td>
+            <td>
+              @if($cat->is_active==true)
+                Active
+              @else
                  Inactive
-			      	@endif
+              @endif
 
-			      </td>
-			      <td>
+            </td>
+            <td>
             <a href="{{ route('admin.category.delete', $cat->id) }}"
                            onclick="return confirm('Are you sure to delete category?')">
               <button class="btn btn-sm btn-danger">Delete</button>
           </a>   
             </td>
-			    </tr>
-			  @endforeach
-			   
-			  </tbody>
-			</table>
-      </div>
-</div>
+          </tr>
+        @endforeach
+         
+        </tbody>
+      </table>
+                </div>
+            </div>
+        </div>
+    </div>
     </main>
   </div>
 </div>

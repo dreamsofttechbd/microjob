@@ -33,11 +33,18 @@ use App\Http\Controllers\User\TopBuyerController;
 use App\Http\Controllers\User\AccountUpgradeController;
 use App\Http\Controllers\User\VerifiyedController;
 use Illuminate\Support\Facades\Route;  
+use App\Models\Category;
+use App\Models\JobPost;
 
 // web pages
 Route::get('/', function () {
-    return view('welcome');
+    $categories = Category::withCount('jobs')->orderBy('id', 'asc')->get();
+    $jobCount = JobPost::count();
+    return view('welcome', compact('categories', 'jobCount'));
 });
+
+// show jpbs
+Route::get('/jobs/category/{slug}', [FrontendController::class, 'category'])->name('jobs.category');
 
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about');
 Route::get('article', [FrontendController::class, 'article'])->name('article');
@@ -98,14 +105,10 @@ Route::middleware('auth')->group(function () {
 });
 
 //user routes group
-Route::middleware(['auth', 'user'])
-    ->prefix('user')
-    ->name('user.')
-    ->group(function () {
-
+Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(function () {
+        
         Route::get('/dashboard', [UserDashboardController::class, 'userDashboard'])
             ->name('dashboard');
-
        //profile route
         Route::get('/profile', [UserProfileController::class, 'userProfile'])
             ->name('profile');
@@ -209,14 +212,11 @@ Route::middleware(['auth', 'user'])
 
   });
 //user routes group end
-
 //admin route group
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/dashboard', [AdminDashboardController::class, 'adminDashboard'])
             ->name('dashboard');
-        
-        
         //verify routes for admin
         Route::get('/user/verify/request', [UserController::class, 'upgradeRequestList'])->name('upgrade.request');
         Route::get('/user/verify/approve-list/', [UserController::class, 'upgradeApprovedList'])->name('paid.approve.list');
@@ -246,6 +246,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         //category route
         Route::get('/category-add', [CategoryController::class, 'index'])
             ->name('category');
+        // Route::get('/category/add', [CategoryController::class, 'indexadd'])
+        //     ->name('category');
+
         Route::post('/category-store', [CategoryController::class, 'store'])
             ->name('category.store');
         Route::get('/category-delete/{id}', [CategoryController::class, 'delete'])

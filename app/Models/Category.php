@@ -10,7 +10,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'icon_emoji',
+        'icon',
         'is_active'
     ];
     public function subcategories(){
@@ -19,6 +19,8 @@ class Category extends Model
     }
 
     public function jobs(){
-    	return $this->hasMany(JobPost::class);
+    	return $this->hasMany(JobPost::class, 'category_id');
     }
+
+
 }

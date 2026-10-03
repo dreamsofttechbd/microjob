@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('icon_emoji', 10)->nullable();
+            $table->string('icon')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
