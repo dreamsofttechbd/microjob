@@ -20,11 +20,11 @@
 </head>
 
 <body>
-     <div id="app">
+ 
         <main class="py-0">
             @yield('content')
         </main>
-    </div>
+ 
     <!--<script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>-->
      <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 </body>

@@ -21,17 +21,17 @@
           <div class="col-sm-4 footer-col">
             <div class="col-title">About Us</div>
             <ul class="footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="{{ asset('/about_us') }}">About Us</a></li>
+              <li><a href="{{ asset('/privacy_policy') }}">Privacy Policy</a></li>
+              <li><a href="{{ asset('/terms_conditions') }}">Terms &amp; Conditions</a></li>
             </ul>
           </div>
 
           <div class="col-sm-4 footer-col">
             <div class="col-title">Agreement</div>
             <ul class="footer-links">
-              <li><a href="#">Microjob Marketplace</a></li>
-              <li><a href="#">Deal Marketplace</a></li>
+              <li><a href="{{ asset('/microjob_marketplace') }}">Microjob Marketplace</a></li>
+              <li><a href="{{ asset('/deal_marketplace') }}">Deal Marketplace</a></li> 
             </ul>
           </div>
           <div class="col-sm-4 footer-col">

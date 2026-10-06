@@ -777,7 +777,7 @@
   </div>
  
  <!--footer-->
-  <footer>
+<footer>
  @include('frontend.layouts.partials.footer')
 </footer>
  
