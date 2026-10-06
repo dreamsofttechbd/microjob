@@ -455,7 +455,19 @@ body {
   }
   
   
-  
+  /*pages css*/
+
+  .about-pages{
+    height: 300px;
+    background-color: #ececfc;
+  }
+
+  .about-pages h2{
+    padding-top: 120px;
+    font-size: 50px;
+  }
+
+
   
   /*------------------------------------------------------------------
   | slider

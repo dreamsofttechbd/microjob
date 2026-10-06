@@ -32,17 +32,24 @@ use App\Http\Controllers\User\TopFreelancerController;
 use App\Http\Controllers\User\TopBuyerController;
 use App\Http\Controllers\User\AccountUpgradeController;
 use App\Http\Controllers\User\VerifiyedController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;  
 use App\Models\Category;
 use App\Models\JobPost;
+use App\Models\WebsiteSetting;
 
 // web pages
 Route::get('/', function () {
     $categories = Category::withCount('jobs')->orderBy('id', 'asc')->get();
     $jobCount = JobPost::count();
-    return view('welcome', compact('categories', 'jobCount'));
+    $setting = WebsiteSetting::first();
+    return view('welcome', compact('categories', 'jobCount', 'setting'));
 });
 
+
+// Sitemap genarate
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])
+    ->name('sitemap');
 // show jpbs
 Route::get('/jobs/category/{slug}', [FrontendController::class, 'category'])->name('jobs.category');
 

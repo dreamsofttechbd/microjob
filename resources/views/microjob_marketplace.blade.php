@@ -1,22 +1,12 @@
 @extends('frontend.layouts.frontend')
+@section('title', $title)
 @section('content')
-<style>
-	.about-pages{
-		height: 300px;
-		background-color: #ececfc;
-	}
-
-	.about-pages h2{
-		padding-top: 120px;
-		font-size: 50px;
-	}
-</style>
 <div class="hero">
 	@include('frontend.layouts.partials.navbar')
 	<div class="contanier mt-5">
 	<div class="row">
 		<div class="col-12 col-xsm-12 col-sm-12 col-lg-12 col-xl-12 col-xxl-12 about-pages">
-			<h2 class="text-center text-primary">About Us JobFixs</h2>
+			<h2 class="text-center text-primary">Microjob Marketplace JobFixs</h2>
 		</div>
 	</div>
 </div>

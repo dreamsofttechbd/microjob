@@ -1,6 +1,17 @@
 @extends('user.layouts.app')
 @section('content')
-
+  <header class="topbar">
+        @include('user.layouts.partials.navbar') 
+    </header>
+  <aside class="sidebar" id="sidebar">
+      @include('user.layouts.partials.sidebar')
+  </aside>
+  
+        <div class="content">
+             <div class="row g-4">
+               @include('user.layouts.partials.braking_news')
+               </div>
+             </div>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 

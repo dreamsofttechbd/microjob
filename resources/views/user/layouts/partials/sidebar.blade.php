@@ -4,7 +4,7 @@
       <div class="s-brand">
           <span class="av">
               <a class="nav-link" href="{{ route('user.dashboard') }}">
-            <img src="{{ asset('storage/app/public/'.$setting->site_logo) }}" alt="Logo">
+            <img src="{{ asset('storage/' . $setting->site_logo) }}" alt="Logo">
           </span>
           <span>{{ $setting->site_title }}</span>
           </div>

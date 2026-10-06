@@ -38,31 +38,36 @@ class FrontendController extends Controller
 
 // about Us
 public function aboutUs(){
-        return view('about_us');
+       $title = 'About Us | Jobfixs | Online Jobs & Freelance Marketplace';
+        return view('about_us', compact('title'));
     }
 
 // policy pages
 public function policy(){
-   return view('privacy_policy');
+   $title = 'Privacy Policy | Jobfixs | Online Jobs & Freelance Marketplace';
+   return view('privacy_policy', compact('title'));
  }
 
 // terms
 public function terms(){
-   return view('terms_conditions');
+  $title = 'Terms Conditions | Jobfixs | Online Jobs & Freelance Marketplace';
+   return view('terms_conditions', compact('title'));
 
    }
 
 // marketplace
 
    public function marketplace(){
-      return view('microjob_marketplace');
+      $title = 'Microjob Marketplace | Online Jobs & Freelance Marketplace';
+      return view('microjob_marketplace', compact('title'));
    }
 
 
 // dealMarketplace
 
     public function dealMarketplace(){
-      return view('deal_marketplace');
+       $title = 'Deal Marketplace | Online Jobs & Freelance Marketplace';
+      return view('deal_marketplace', compact('title'));
    }
 
 // article
