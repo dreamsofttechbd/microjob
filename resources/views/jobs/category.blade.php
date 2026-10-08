@@ -165,7 +165,11 @@
                     {{ $remainingWorkers }} Workers Left
                 </div>
             </td>
-              <td class="text-end"><button class="btn btn-primary btn-sm px-3 apply-btn">Apply</button></td>
+               <td class="text-end">
+                  <a href="{{route('user.job-details',$job->code)}}">
+                       <button class="btn btn-primary btn-sm px-3 apply-btn">Apply</button>
+                  </a>
+              </td>
             </tr>
             @endforeach
           </tbody>

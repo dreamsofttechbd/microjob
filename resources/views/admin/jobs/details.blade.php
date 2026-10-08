@@ -334,7 +334,7 @@ body{font-family:system-ui,sans-serif;background:#f1f5f9;color:#0f172a;font-size
             </div>
             <div class="dcard-body">
               @if($job->thumbnail)
-                <img src="{{ asset('storage/app/public/'.$job->thumbnail) }}" class="thumb-large" alt="Job Thumbnail">
+                <img src="{{ asset('storage/'.$job->thumbnail) }}" class="thumb-large" alt="Job Thumbnail">
               @else
                 <div class="thumb-placeholder-lg">
                   <svg viewBox="0 0 16 16" fill="none" stroke="#cbd5e1" stroke-width="1.4" width="28" height="28"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M2 10l3-3 3 3 2-2 4 4"/></svg>

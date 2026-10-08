@@ -44,6 +44,7 @@ return new class extends Migration
         $table->text('reason')->nullable();
         $table->text('verified_reason')->nullable();
         $table->boolean('is_verified')->default(0);
+        $table->boolean('is_upgrade')->default(0);
         $table->enum('upgrade_status',['active','expired','unverified'])->default('unverified');
         $table->dateTime('upgrade_at')->nullable();
         $table->dateTime('upgrade_expired_at')->nullable();

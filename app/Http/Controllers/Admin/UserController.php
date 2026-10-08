@@ -93,6 +93,7 @@ class UserController extends Controller
 
         // Update user
         $user->upgrade_status = 'active';
+        $user->is_upgrade = true;
         $user->upgrade_at = now();
         $user->upgrade_expired_at = now()->addMonths(3);
         $user->save();

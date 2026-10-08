@@ -123,13 +123,19 @@
 
         <!-- Register / Sign in -->
         <div class="d-flex flex-nowrap gap-1 flex-shrink-0">
-            <a class="btn btn-primary px-2 btn-sm" href="{{ route('register') }}">
-               <i class="bi bi-send-plus"></i>&nbsp; Register
-            </a>
-
-            <a class="btn btn-danger btn-sm px-2" href="{{ route('login') }}">
-                <i class="bi bi-box-arrow-in-right"></i>&nbsp; Sign in
-            </a>
+           @if(!Auth::check())
+                <a class="btn btn-primary px-2 btn-sm" href="{{ route('register') }}">
+                   <i class="bi bi-send-plus"></i>&nbsp; Register
+                </a>
+    
+                <a class="btn btn-danger btn-sm px-2" href="{{ route('login') }}">
+                    <i class="bi bi-box-arrow-in-right"></i>&nbsp; Sign in
+                </a>
+             @else
+                <a class="btn btn-dark btn-sm px-2" href="{{ route('user.dashboard') }}">
+                    <i class="bi bi-speedometer"></i>&nbsp; Dashboard
+                </a>
+             @endif
         </div>
 
     </div>

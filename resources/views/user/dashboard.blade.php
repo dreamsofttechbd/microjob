@@ -13,10 +13,14 @@
                </div>
              </div>
 
+@php
+   $routeName = Route::currentRouteName();
+@endphp
+
+@if($routeName==='user.find.jobs')
 <div class="container mt-4 mb-5">
   <div class="row">
     <div class="col-12">
-       
       @if($banner)
       <a target="_blank" href="{{ route('user.banner.click', $banner->id) }}">
           <img src="{{ asset('storage/app/public/'.$banner->thumbnail) }}">
@@ -348,6 +352,7 @@
     </div>
   </div>
 </div>
+@endif
 
 <footer class="mt-5 footer-section">
   @include('user.layouts.partials.footer')
