@@ -12,6 +12,7 @@
                @include('user.layouts.partials.braking_news')
                </div>
              </div>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -43,19 +44,21 @@
         flex-wrap: wrap; gap: 10px;
     }
     .jobs-card .card-top h6 {
-        font-family: 'Syne', sans-serif; font-weight: 700;
+         font-family: 'Times New Roman', Times, serif; font-weight: 700;
         color: var(--dark); margin: 0;
     }
     .result-count {
-        background: var(--teal-light); color: var(--teal-dark);
-        border-radius: 20px; padding: 3px 14px;
+        background: #FE9A37; 
+        color: #fff;
+        border-radius: 6px; 
+        padding: 3px 14px;
         font-size: .78rem; font-weight: 700;
     }
 
     /* ── Table ── */
     table { margin: 0 !important; }
     thead th {
-        font-family: 'Syne', sans-serif;
+         font-family: 'Times New Roman', Times, serif;
         font-size: .78rem; text-transform: uppercase;
         letter-spacing: .6px; color: var(--muted);
         background: #f8f9fa; border: none !important;
@@ -194,19 +197,24 @@
 
     /* ── Job Info Strip ── */
     .job-info-strip {
-        background: linear-gradient(135deg, #0d462c 0%, #090a0a 100%);
+        background: #7b4df2;
         border-radius: var(--radius); padding:18px 24px;
         margin-bottom:24px;
         display:flex; flex-wrap:wrap; gap:20px; align-items:center;
     }
-    .ji-title { font-family:'Syne',sans-serif; font-weight:800; color:#fff; font-size:1.1rem; margin:0; }
+    .ji-title { 
+        font-family: 'Times New Roman', Times, serif;
+        font-weight:800; color:#fff; 
+        font-size:1.5rem; margin:0; 
+        
+    }
     .ji-meta  { color:rgba(255,255,255,.5); font-size:.8rem; margin:2px 0 0; }
     .ji-stat  {
         background:rgba(255,255,255,.07);
         border:1px solid rgba(255,255,255,.12);
         border-radius:10px; padding:8px 18px; text-align:center;
     }
-    .ji-stat .v { font-family:'Syne',sans-serif; font-weight:800; color:var(--teal); font-size:1.1rem; }
+    .ji-stat .v { font-family: 'Times New Roman', Times, serif; font-weight:800; color:var(--teal); font-size:1.1rem; }
     .ji-stat .l { font-size:.7rem; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.7px; }
 
     /* ── Pagination ── */
@@ -271,8 +279,7 @@
 </form>
 
 <div class="container pb-5 mt-4">
-
-    <a href="{{ url()->previous() }}" class="back-link">
+    <a href="{{ url()->previous() }}" class="back-link btn btn-danger text-white">
         <i class="bi bi-arrow-left-circle-fill"></i> Back to My Jobs
     </a>
 
@@ -280,21 +287,21 @@
     <div class="job-info-strip">
         <div class="flex-grow-1">
             <p class="ji-title">{{ $job->title }}</p>
-            <p class="ji-meta"><i class="bi bi-geo-alt me-1"></i>{{ $job->continent->name ?? '—' }}</p>
+            <p class="ji-meta text-white"><i class="bi bi-geo-alt me-1 text-warning"></i>{{ $job->continent->name ?? '—' }}</p>
         </div>
-        <div class="ji-stat">
-            <div class="v">${{ $job->worker_earn }}</div>
-            <div class="l">Per Worker</div>
+        <div class="ji-stat bg-warning">
+            <div class="v text-dark">${{ $job->worker_earn }}</div>
+            <div class="l text-dark">Per Worker</div>
         </div>
-        <div class="ji-stat">
+        <div class="ji-stat bg-danger">
             <div class="v">
-                <span class="text-danger">{{ $job->worker_done }}</span>/<span class="text-success">{{ $job->worker_need }}</span>
+                <span class="text-warning">{{ $job->worker_done }}</span>/<span class="text-white">{{ $job->worker_need }}</span>
             </div>
-            <div class="l">Remaining</div>
+            <div class="l text-white">Remaining</div>
         </div>
-        <div class="ji-stat">
-            <div class="v">{{ $job->worker_done }}</div>
-            <div class="l">Submissions</div>
+        <div class="ji-stat bg-info">
+            <div class="v text-white">{{ $job->worker_done }}</div>
+            <div class="l text-white">Submissions</div>
         </div>
     </div>
 
@@ -321,10 +328,10 @@
     {{-- Submissions Table --}}
     <div class="jobs-card">
         <div class="card-top">
-            <h6><i class="bi bi-card-checklist me-2 text-success"></i>Submitted Proofs</h6>
-            <div class="d-flex align-items-center gap-2 flex-wrap">
+            <h6 class="text-primary"><i class="bi bi-card-checklist me-2 text-primary"></i>Submitted Proofs</h6>
+            <div class="d-flex align-items-center gap-2 flex-wrap btn btn-primary">
                 <span class="result-count">{{ $submissions->total() }} total</span>
-                <span class="text-muted" style="font-size:.78rem;">
+                <span class="text-white" style="font-size:.78rem;">
                     Page {{ $submissions->currentPage() }} of {{ $submissions->lastPage() }}
                 </span>
             </div>
