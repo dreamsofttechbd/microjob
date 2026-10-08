@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use App\Models\BannerAdsPrice;
 
 class BannerController extends Controller
 {
@@ -106,4 +107,26 @@ class BannerController extends Controller
  
         return back()->with('success', 'Banner rejected.');
     }
+
+   // Banner packages
+
+    public function addPackage(){
+        return view('admin.banner.package');
+    }
+
+  // Banner packages store
+public function packageStore(Request $request){
+    $request->validate([
+        'days' => 'required|integer|min:1',
+        'price' => 'required|numeric|min:0',
+    ]);
+
+    BannerAdsPrice::create([
+        'days' => $request->days,
+        'price' => $request->price,
+    ]);
+
+    return redirect()->back()->with('success', 'Banner package added successfully.');
+}
+
 }

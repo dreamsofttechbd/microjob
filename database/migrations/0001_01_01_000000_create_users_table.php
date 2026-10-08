@@ -75,6 +75,13 @@ return new class extends Migration
         $table->integer('last_activity')->index();
      });
 
+    Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn([
+                'referral_code',
+                'referred_by',
+            ]);
+        });
+
     }
 
     /**

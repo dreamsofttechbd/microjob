@@ -1,5 +1,18 @@
 <?php
-
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\ContinentController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\PaymentMethodController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\DepositController;
+use App\Http\Controllers\Admin\BreakingNoticeController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\WithdrawController;
+use App\Http\Controllers\Admin\ProfileController;
 //admin route group
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 

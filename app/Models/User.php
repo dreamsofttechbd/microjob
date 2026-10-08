@@ -22,7 +22,24 @@ class User extends Authenticatable
         'email',
         'password',
         'is_upgrade',
+        'referral_code',
+        'referred_by',
     ];
+
+
+    protected static function boot(){
+    
+    parent::boot();
+    static::creating(function ($user) {
+
+        do {
+            $code = strtoupper(substr(md5(uniqid()), 0, 8));
+        } while (self::where('referral_code', $code)->exists());
+
+        $user->referral_code = $code;
+    });
+    
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -72,6 +89,14 @@ class User extends Authenticatable
    {
     return $this->hasMany(HideJob::class);
    }
+   // referrals
+   public function referrals(){
+    return $this->hasMany(User::class, 'referred_by');
+     }
+
+   public function referredBy(){
+    return $this->belongsTo(User::class, 'referred_by');
+    }
 
    
 }

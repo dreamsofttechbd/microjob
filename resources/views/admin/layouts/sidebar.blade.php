@@ -302,6 +302,15 @@
     <span class="nbadge blue">{{App\Models\Banner::where('status','pending')->count()}}</span>
   </a>
 
+   <a href="{{route('admin.banner.package')}}"
+     class="ni {{ request()->routeIs('admin.banner.package') ? 'active' : '' }}">
+    <div class="ni-icon">
+      <svg viewBox="0 0 16 16"><path d="M8 13V5M5 8l3-3 3 3"/><rect x="2" y="2" width="12" height="2" rx="1"/></svg>
+    </div>
+    <span class="ni-label">Banner Package</span>
+    <span class="nbadge blue"></span>
+  </a>
+
 
   {{-- Notice Manage --}}
   <div class="sb-section">Notice Manage</div>

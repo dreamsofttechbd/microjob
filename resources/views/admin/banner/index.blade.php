@@ -124,7 +124,7 @@ body{font-family:system-ui,sans-serif;background:#f1f5f9;color:#0f172a;font-size
     <button class="hbtn" id="hbtn" onclick="toggleSB()">
       <span></span><span></span><span></span>
     </button>
-    <div class="logo">Onetask<em>Market</em>
+    <div class="logo">Jobfixs<em>Market</em>
       <span style="font-size:10px;background:#eff6ff;color:#2563eb;padding:2px 6px;border-radius:4px;font-weight:600;margin-left:2px">Admin</span>
     </div>
     <div class="tb-search">
@@ -142,11 +142,8 @@ body{font-family:system-ui,sans-serif;background:#f1f5f9;color:#0f172a;font-size
 
   <div class="body">
     <div class="overlay" id="overlay" onclick="closeSB()"></div>
-
     @include('admin.layouts.sidebar')
-
     <main class="main">
-
       {{-- PAGE HEADER --}}
       <div class="page-header">
         <div>

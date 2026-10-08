@@ -70,7 +70,7 @@ class UserBannerController extends Controller
              UserTransaction::create([
             'user_id' => $user->id,
             'transaction_id' => strtoupper(uniqid()),
-            'type' => "charge",
+            'type' => "bannerads_payment",
             'amount' => $package->price,
             'description' => "Banner ads cost deducted",
             'reference_id' => $banner->id,

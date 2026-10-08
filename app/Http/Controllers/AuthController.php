@@ -68,6 +68,16 @@ public function login(Request $request)
             'password' => 'required|min:6'
         ]);
 
+
+           // Find referrer
+            $referrer = null;
+            if ($request->filled('ref')) {
+                $referrer = User::where(
+                    'referral_code',
+                    $request->ref
+                )->first();
+            }
+
       $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -89,3 +99,5 @@ public function login(Request $request)
         return redirect('/login');
     }
 }
+
+

@@ -13,30 +13,17 @@ use App\Http\Controllers\User\FinishJobController;
 use App\Http\Controllers\User\BoostJobController;
 use App\Http\Controllers\User\UserBannerController;
 use App\Http\Controllers\User\HideJobController;
-use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\ContinentController;
-use App\Http\Controllers\Admin\CountryController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\Admin\PaymentMethodController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\JobController;
-use App\Http\Controllers\Admin\DepositController;
-use App\Http\Controllers\Admin\BreakingNoticeController;
-use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\WithdrawController;
-use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\User\TopFreelancerController;
 use App\Http\Controllers\User\TopBuyerController;
 use App\Http\Controllers\User\AccountUpgradeController;
 use App\Http\Controllers\User\VerifiyedController;
+use App\Http\Controllers\User\UserReferController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;  
 use App\Models\Category;
 use App\Models\JobPost;
-use App\Models\WebsiteSetting;
+use App\Models\WebsiteSetting; 
 
 // web pages
 Route::get('/', function () {
@@ -212,8 +199,12 @@ Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(functi
 
       //top buyers
       Route::get('/top-buyers',  [TopBuyerController::class, 'index'])->name('top-buyers');
+      // refer earn
+    Route::middleware('auth')->group(function () {
+    Route::get('/refer-earn',  [UserReferController::class, 'addRefer'])->name('refer.earn');
 
-
+     });
+      
 
   });
 //user routes group end

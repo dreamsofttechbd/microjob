@@ -66,7 +66,7 @@
           </a>
         </li>
         <li>
-          <a class="s-link" href="">
+          <a class="s-link" href="{{ route('user.refer.earn') }}">
             <i class="bi bi-bag-plus"></i>
             <span>Refer &amp; Earn</span>
             <i class="bi bi-chevron-right ms-auto arw"></i>

@@ -39,10 +39,8 @@
   @foreach($packages as $package)
   <option value="{{$package->days}}">{{$package->days}}Days --> Price  ${{$package->price}}</option>
   @endforeach
-  
   </select>
   </div>
-  
   <div class="col-12">
     <label for="inputAddress2" class="form-label">Link</label>
    <input type="text" class="form-control bg-white" name="link" placeholder="www.facebook.com">
