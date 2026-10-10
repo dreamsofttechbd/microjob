@@ -13,7 +13,7 @@
         </ul>
     </div>
 @endif
-  <form action="{{route('register')}}" method="post">
+  <form class="mt-3" action="{{route('register')}}" method="post">
     @csrf
     <div class="row g-3">
       <!-- Full Name -->
@@ -65,7 +65,11 @@
           @endforeach
         </select>
       </div>
-
+       <!-- refer  -->
+      <div class="col-12 col-sm-12">
+        <label class="form-label"> Referral Code (Optional)</label>
+        <input type="text" name="ref" id="ref" class="form-control" value="{{ old('ref', request('ref')) }}" placeholder="Enter referral code Ex: 884F4F11">
+      </div>
       <!-- Terms checkbox -->
       <div class="col-12 mt-2">
         <div class="form-check d-flex align-items-start gap-2">

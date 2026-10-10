@@ -26,16 +26,9 @@
 
                     <div class="input-group mb-3">
            <input type="text" id="referralLink" class="form-control" value="{{ $referralLink }}"readonly >
-
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            onclick="copyReferralLink()">
-                            Copy
-                        </button>
-
+ <button type="button" id="copyBtn" class="btn btn-primary" onclick="copyReferralLink()"> Copy
+</button>
                     </div>
-
                     <div class="alert alert-success">
                         You have referred
                         <strong>{{ $totalReferrals }}</strong>
@@ -56,16 +49,25 @@
                 </div>
            </div>
        </div>
-
-
 <script>
 function copyReferralLink() {
 
     const input = document.getElementById('referralLink');
+    const button = document.getElementById('copyBtn');
 
-    navigator.clipboard.writeText(input.value);
+    navigator.clipboard.writeText(input.value).then(() => {
 
-    alert('Referral link copied!');
+        button.innerText = 'Copied!';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-danger');
+
+        setTimeout(() => {
+            button.innerText = 'Copy';
+            button.classList.remove('btn-danger');
+            button.classList.add('btn-primary');
+        }, 2000);
+
+    });
 }
 </script>
 

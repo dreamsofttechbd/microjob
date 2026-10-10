@@ -33,7 +33,6 @@ Route::get('/', function () {
     return view('welcome', compact('categories', 'jobCount', 'setting'));
 });
 
-
 // Sitemap genarate
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])
     ->name('sitemap');

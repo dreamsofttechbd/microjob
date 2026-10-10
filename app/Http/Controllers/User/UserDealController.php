@@ -4,12 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class UserDealController extends Controller
 {
      // browse deal
 	public function browsedeal(){
-	    return view('user.browse_deal'); 
+		$allbanner = Banner::where('user_id', auth()->id())->latest()->get();
+	    return view('user.browse_deal', compact('allbanner')); 
 	}
 
 	 // deal create

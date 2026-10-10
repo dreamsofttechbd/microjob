@@ -70,13 +70,16 @@ public function login(Request $request)
 
 
            // Find referrer
-            $referrer = null;
-            if ($request->filled('ref')) {
-                $referrer = User::where(
-                    'referral_code',
-                    $request->ref
-                )->first();
-            }
+         $referrer = null;
+
+    if ($request->filled('ref')) {
+        $referrer = User::where(
+            'referral_code',
+            strtoupper(trim($request->ref))
+        )->first();
+    }
+
+       
 
       $user = User::create([
             'name' => $request->name,
@@ -84,6 +87,7 @@ public function login(Request $request)
             'password' => Hash::make($request->password),
             'country' => $request->country,
             'role' => 'user', // force user role
+            'referred_by' => $referrer?->id,
         ]);
           auth()->login($user);
          return redirect()->route('user.dashboard');

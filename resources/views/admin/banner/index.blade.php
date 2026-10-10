@@ -151,7 +151,6 @@ body{font-family:system-ui,sans-serif;background:#f1f5f9;color:#0f172a;font-size
           <div class="page-sub">Manage all user-submitted banner advertisements</div>
         </div>
       </div>
-
       {{-- SUCCESS ALERT --}}
       @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show mb-3" role="alert" style="border-radius:10px;font-size:13px">

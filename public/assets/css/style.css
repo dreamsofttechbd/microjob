@@ -119,13 +119,33 @@ body {
     box-shadow:  0 20px 60px rgba(108,71,255,.13);
     padding: 48px 44px;
     width: 100%;
-    max-width: 460px;
+    /*max-width: 460px;*/
     border: 1px solid rgba(108,71,255,.1);
     position: relative;
     overflow: hidden;
 }
 
 .signup-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6c47ff, #ff6b6b);
+    border-radius: 14px 0 0;
+}
+
+.signup-card-login {
+    background: #ffffff;
+    border-radius:  14px;
+    box-shadow:  0 20px 60px rgba(108,71,255,.13);
+    padding: 48px 44px;
+    width: 30%;
+    border: 1px solid rgba(108,71,255,.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-card-login::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;

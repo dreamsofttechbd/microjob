@@ -74,7 +74,7 @@ return new class extends Migration
         $table->longText('payload');
         $table->integer('last_activity')->index();
      });
-
+    // referral code
     Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
                 'referral_code',

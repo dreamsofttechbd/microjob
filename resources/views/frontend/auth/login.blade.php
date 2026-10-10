@@ -1,11 +1,9 @@
 @extends('frontend.layouts.app')
 @section('content')
 <div class="auth-page">
-    <div class="signup-card mt-5">
-
+    <div class="signup-card-login mt-5">
         <div class="form-title">LOGIN</div>
         <p class="form-subtitle">Welcome back! Please sign in to continue.</p>
-
         {{-- Success Message --}}
         @if(session('success'))
             <div class="auth-alert success">{{ session('success') }}</div>
@@ -26,30 +24,14 @@
             {{-- Email --}}
             <div class="field-group">
                 <label class="form-label">Email <span>*</span></label>
-                <input
-                    type="email"
-                    name="email"
-                    class="form-control"
-                    placeholder="Email Address"
-                    value="{{ old('email') }}"
-                    required
-                    autocomplete="email"
-                />
+                <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email') }}" required autocomplete="email"/>
             </div>
 
             {{-- Password --}}
             <div class="field-group">
                 <label class="form-label">Password <span>*</span></label>
                 <div class="pass-wrap">
-                    <input
-                        type="password"
-                        name="password"
-                        class="form-control"
-                        id="password"
-                        placeholder="Password"
-                        required
-                        autocomplete="current-password"
-                    />
+        <input type="password" name="password" class="form-control" id="password"placeholder="Password" required autocomplete="current-password" />
                     <button type="button" class="pass-toggle" onclick="togglePass('password', this)" aria-label="Toggle password">
                         {{-- Eye Open --}}
                         <svg class="eye-show" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -68,7 +50,6 @@
                 <button type="submit" class="btn-register-user">Login</button>
             </div>
         </form>
-
         <div class="login-link">
             Don't have an account? <a href="{{ route('register') }}">Register</a>
         </div>
