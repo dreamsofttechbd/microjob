@@ -9,7 +9,8 @@ use App\Models\Deposit;
 use App\Models\UserNotification;
 use App\Models\UserTransaction;
 use App\Models\User;
-use App\Models\SiteWallet;
+use App\Models\WebsiteSetting;
+use App\Models\SiteWallet; 
 
 class DepositController extends Controller
 {
@@ -84,25 +85,24 @@ class DepositController extends Controller
         $deposit->status = 'approved';
         $deposit->approved_at = now();
         $deposit->save();
-
         //  user balance increment
-
         $user = User::findOrFail($deposit->user_id); // deposit user
         if ($user->referred_by) {
-             $referred_by = User::where('referral_code',$user->referred_by)->first();  //others user
+             $referred_by = User::findOrFail($user->referred_by);  //others user
              $setting = WebsiteSetting::first();
              $reffer_bonus_parcent = $setting->reffer_bonus;
              $bonus = ($deposit->amount*$reffer_bonus_parcent)/100;
         
              $referred_by->deposit_commission_from_refer += $bonus;
+             $referred_by->current_earning += $bonus;
              $referred_by->save();
 
              UserTransaction::create([
-            'user_id' => $referred_by->user_id,
+            'user_id' => $referred_by->id,
             'transaction_id' => strtoupper(uniqid()),
             'type' => "earning",
             'amount' => $bonus,
-            'description' => "Refer earnign from ". $user->name . "added successfully",
+            'description' => "Refer earnign from ". $user->name . " added successfully",
             'reference_id' => "Deposit ID ".$deposit->id,
             'status' => 'success',
            ]);

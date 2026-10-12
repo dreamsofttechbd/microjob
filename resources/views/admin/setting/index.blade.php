@@ -290,6 +290,12 @@ tr:last-child td{border-bottom:none}
                         <input type="number" step="" name="paid_charg" class="form-control"
                             value="{{ old('paid_charg', $setting->paid_charg) }}">
                      </div>
+                       
+                    <div class="col-md-4">
+                        <label class="form-label">Reffer Charge</label>
+                        <input type="number" step="" name="reffer_charg" class="form-control"
+                            value="{{ old('reffer_charg', $setting->reffer_charg) }}">
+                     </div>
 
                       <div class="col-md-12">
                         <label class="form-label">Job Submit Rules</label>

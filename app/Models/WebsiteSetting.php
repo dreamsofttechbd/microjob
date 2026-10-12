@@ -35,6 +35,7 @@ class WebsiteSetting extends Model
         'max_reject_percentage',
         'upgrade_fee',
         'paid_charg',
+        'reffer_charg',
     ];
 
     protected $casts = [

@@ -63,7 +63,7 @@ public function login(Request $request)
     public function register(Request $request)
     {
        
-        // return $request->all();
+         //return $request->all();
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -74,14 +74,14 @@ public function login(Request $request)
            // Find referrer
          $referrer = null;
 
-    if ($request->filled('ref')) {
-        $referrer = User::where(
-            'referral_code',
-            strtoupper(trim($request->ref))
-        )->first();
-    }
+        if ($request->filled('ref')) {
+            $referrer = User::where(
+                'referral_code',
+                strtoupper(trim($request->ref))
+            )->first();
+        }
 
-       
+           
 
       $user = User::create([
             'name' => $request->name,
@@ -93,28 +93,6 @@ public function login(Request $request)
         ]);
 
 
-// Fixed $1 এর 3% commission = $0.03
-$commission = 1 * 0.03;
-
-if ($user->referred_by) {
-
-    $referrer = User::find($user->referred_by);
-
-    if ($referrer) {
-        $referrer->increment(
-            'deposit_commission_from_refer',
-            $commission
-        );
-
-        $referrer->increment(
-            'current_deposit',
-            $commission
-        );
-
-       // Increase total referral count by 1
-        $referrer->increment('total_refer', 1);
-    }
-}
 
           auth()->login($user);
          return redirect()->route('user.dashboard');

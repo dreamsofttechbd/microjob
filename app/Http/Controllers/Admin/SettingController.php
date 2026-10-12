@@ -68,7 +68,7 @@ class SettingController extends Controller
                     ->store('settings', 'public');
             }
 
-            // ── বাকি সব fields ───────────────────────────────
+            // ── all fields ───────────────────────────────
             $setting->fill([
                 'site_name'             => $request->site_name,
                 'site_title'            => $request->site_title,
@@ -95,7 +95,8 @@ class SettingController extends Controller
                 'boost_charge_per_hour' =>$request->boost_charge_per_hour,
                 'max_reject_percentage' =>$request->max_reject_percentage,
                 'job_submit_rules' =>$request->job_submit_rules,
-                'paid_charg' =>$request->paid_charg,
+                'paid_charg' =>$request->paid_charg,   
+                'reffer_charg' =>$request->reffer_charg, 
                 
 
             ]);

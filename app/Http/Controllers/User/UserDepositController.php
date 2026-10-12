@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PaymentMethod;
 use App\Models\Deposit;
+use App\Models\WebsiteSetting;
 
 class UserDepositController extends Controller
 {
@@ -33,6 +34,9 @@ class UserDepositController extends Controller
         // ðŸ”¥Sanitation
         $payment_method_id = (int) $request->payment_method_id;
         $amount = $request->amount;
+        $setting = WebsiteSetting::first();
+        $dolar_rate = $setting->dolar_rate;
+        $amountInDolar = $amount/$dolar_rate;
         $transaction_id = trim(strip_tags($request->transaction_id));
         $sender_number = preg_replace('/[^0-9]/', '', $request->sender_number);
         
@@ -45,7 +49,7 @@ class UserDepositController extends Controller
         Deposit::create([
             'user_id' => $user->id,
             'payment_method_id' => $payment_method_id,
-            'amount' => $amount,
+            'amount' => $amountInDolar,
             'transaction_id' => $transaction_id,
             'sender_number' => $sender_number,
         ]);
