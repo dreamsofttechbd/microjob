@@ -19,8 +19,9 @@ use App\Http\Controllers\User\TopBuyerController;
 use App\Http\Controllers\User\AccountUpgradeController;
 use App\Http\Controllers\User\VerifiyedController;
 use App\Http\Controllers\User\UserReferController;
+use App\Http\Controllers\User\UserTransactionController;
 use App\Http\Controllers\SitemapController;
-use Illuminate\Support\Facades\Route;  
+use Illuminate\Support\Facades\Route;   
 use App\Models\Category;
 use App\Models\JobPost;
 use App\Models\WebsiteSetting; 
@@ -201,7 +202,8 @@ Route::middleware(['auth', 'user'])->prefix('user')->name('user.')->group(functi
       // refer earn
     Route::middleware('auth')->group(function () {
     Route::get('/refer-earn',  [UserReferController::class, 'addRefer'])->name('refer.earn');
-
+    Route::get('/transaction-history',  [UserTransactionController::class, 'userTransaction'])->name('transaction-history');
+    
      });
       
 

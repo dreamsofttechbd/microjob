@@ -87,6 +87,13 @@
             <i class="bi bi-chevron-right ms-auto arw"></i>
           </a>
         </li>
+            <li>
+              <a class="s-link" href="{{ route('user.transaction-history') }}">
+            <i class="bi bi-currency-dollar"></i>
+            <span>Transaction</span>
+            <i class="bi bi-chevron-right ms-auto arw"></i>
+          </a>
+        </li>
         <li>
           <a class="s-link" href="{{ route('user.create.job') }}">
             <span class="btn btn-primary btn-sm"><i class="bi bi-send-plus"></i> &nbsp;Post a Job</span>

@@ -68,7 +68,7 @@
        <!-- refer  -->
       <div class="col-12 col-sm-12">
         <label class="form-label"> Referral Code (Optional)</label>
-        <input type="text" name="ref" id="ref" class="form-control" value="{{ old('ref', request('ref')) }}" placeholder="Enter referral code Ex: 884F4F11">
+        <input type="hidden" name="ref" id="ref" class="form-control" value="{{ old('ref', request('ref')) }}" placeholder="Enter referral code Ex: 884F4F11">
       </div>
       <!-- Terms checkbox -->
       <div class="col-12 mt-2">

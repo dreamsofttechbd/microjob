@@ -96,7 +96,7 @@ class SettingController extends Controller
                 'max_reject_percentage' =>$request->max_reject_percentage,
                 'job_submit_rules' =>$request->job_submit_rules,
                 'paid_charg' =>$request->paid_charg,   
-                'reffer_charg' =>$request->reffer_charg, 
+                'reffer_bonus' =>$request->reffer_bonus, 
                 
 
             ]);

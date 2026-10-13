@@ -17,7 +17,7 @@
                    <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6"><h6 class="text-dark fw-bold mt-2">Deposit</h6></div>
-                        <div class="col-lg-6 text-end"><a class="btn btn-primary btn-sm" href="{{ route('user.deposit.history')}}" role="button"><i class="bi bi-list-ul"></i> Transaction History</a></div>
+                        <div class="col-lg-6 text-end"><a class="btn btn-primary btn-sm" href="{{ route('user.deposit.history')}}" role="button"><i class="bi bi-list-ul"></i> Deposit History</a></div>
                     </div>
                    </div>
                </div>

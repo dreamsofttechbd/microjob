@@ -292,9 +292,9 @@ tr:last-child td{border-bottom:none}
                      </div>
                        
                     <div class="col-md-4">
-                        <label class="form-label">Reffer Charge</label>
-                        <input type="number" step="" name="reffer_charg" class="form-control"
-                            value="{{ old('reffer_charg', $setting->reffer_charg) }}">
+                        <!-- <label class="form-label">Reffer Bonus</label> -->
+                        <input type="number" step="" name="reffer_bonus" class="form-control"
+                            value="{{ old('reffer_bonus', $setting->reffer_bonus) }}">
                      </div>
 
                       <div class="col-md-12">

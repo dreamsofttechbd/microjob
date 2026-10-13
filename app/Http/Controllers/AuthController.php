@@ -93,6 +93,14 @@ public function login(Request $request)
         ]);
 
 
+    // Total referral count
+        if ($user->referred_by) {
+            $referrer = User::find($user->referred_by);
+
+            if ($referrer) {
+                $referrer->increment('total_refer', 1);
+            }
+        }
 
           auth()->login($user);
          return redirect()->route('user.dashboard');
